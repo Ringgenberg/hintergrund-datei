@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animierter Hintergrund</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .gradient-bg {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(40deg, rgb(108, 0, 162), rgb(0, 17, 82));
+        }
+
+        .gradients-container {
+            filter: url(#goo) blur(40px);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        .g1, .g2, .g3, .g4, .g5 {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            mix-blend-mode: hard-light;
+            opacity: 0.8;
+        }
+
+        .g1 { background: radial-gradient(circle, rgba(18, 113, 255, 0.8) 0%, rgba(18, 113, 255, 0) 50%); animation: moveVertical 30s infinite; }
+        .g2 { background: radial-gradient(circle, rgba(221, 74, 255, 0.8) 0%, rgba(221, 74, 255, 0) 50%); animation: moveInCircle 20s reverse infinite; }
+        .g3 { background: radial-gradient(circle, rgba(100, 220, 255, 0.8) 0%, rgba(100, 220, 255, 0) 50%); animation: moveInCircle 40s infinite; }
+        .g4 { background: radial-gradient(circle, rgba(200, 50, 50, 0.8) 0%, rgba(200, 50, 50, 0) 50%); animation: moveHorizontal 40s infinite; }
+        .g5 { background: radial-gradient(circle, rgba(180, 180, 50, 0.8) 0%, rgba(180, 180, 50, 0) 50%); animation: moveInCircle 20s infinite; }
+
+        @keyframes moveInCircle { 0% { transform: rotate(0deg); } 50% { transform: rotate(180deg); } 100% { transform: rotate(360deg); } }
+        @keyframes moveVertical { 0%, 100% { transform: translateY(-50%); } 50% { transform: translateY(50%); } }
+        @keyframes moveHorizontal { 0%, 100% { transform: translateX(-50%) translateY(-10%); } 50% { transform: translateX(50%) translateY(10%); } }
+
+    </style>
+</head>
+<body>
+    <div class="gradient-bg">
+        <div class="gradients-container">
+            <div class="g1"></div>
+            <div class="g2"></div>
+            <div class="g3"></div>
+            <div class="g4"></div>
+            <div class="g5"></div>
+        </div>
+    </div>
+</body>
+</html>
